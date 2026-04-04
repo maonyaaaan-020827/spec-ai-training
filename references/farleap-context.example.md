@@ -1,15 +1,15 @@
-# Local Business Context (Example)
+# ローカル業務コンテキスト（例）
 
-This file is a template for local-only context.
-Copy this file to:
+このファイルはローカル専用コンテキストのテンプレート。
+以下のファイル名でコピーして使う。
 
 - `references/farleap-context.local.md`
 
-and keep that local file untracked (gitignored).
+コピー先ファイルは追跡対象外（gitignore）として扱う。
 
-## Suggested sections
+## 推奨セクション
 
-- Product context summary
-- Current focus themes
-- Internal terminology notes
-- Constraints and non-public references
+- プロダクト背景の要約
+- 現在の重点テーマ
+- 社内用語メモ
+- 制約事項と非公開参照情報

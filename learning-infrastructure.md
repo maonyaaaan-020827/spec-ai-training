@@ -1,49 +1,49 @@
-# Learning Infrastructure
+# 学習インフラ
 
-Last updated: 2026-04-04
+最終更新: 2026-04-04
 
-## 1) Daily Execution Loop (Day5+)
+## 1) 日次実行ループ（Day5+）
 
-1. Build output in `training/day-xx/`
-2. Push branch
-3. Open PR
-4. Confirm Slack notification
-5. Resolve comments
+1. `training/day-xx/` に成果物を作成
+2. ブランチをPush
+3. PR作成
+4. Slack通知を確認
+5. コメント反映
 6. Merge
 
-This is the mandatory completion loop.
+これを完了必須ループとする。
 
-If reviewer response is delayed, mark temporary completion as:
-- PR opened
-- Slack notification confirmed
-- Quiz passed (100)
+レビュア応答が遅れる場合の暫定完了条件:
+- PR作成済み
+- Slack通知確認済み
+- クイズ100点達成
 
-Convert to final completion after merge.
+Merge後に最終完了へ更新する。
 
-## 2) Quiz Loop
+## 2) クイズループ
 
-1. Read assigned resources
-2. Take Google Forms quiz
-3. Retake until 100%
-4. Attach evidence in PR body
-5. Merge only after quiz pass
+1. 指定教材を読む
+2. Google Forms クイズを受験
+3. 100点まで再受験
+4. PR本文に証跡を添付
+5. クイズ合格後にMerge
 
-## 3) Async Review Rules
+## 3) 非同期レビュー運用ルール
 
-- No progress blocking by in-person mentor explanation.
-- Questions should be handled by docs, linked resources, and PR comments.
-- Reviews should happen asynchronously in GitHub.
+- 対面メンター説明待ちで進行を止めない。
+- 不明点はドキュメント、参照リンク、PRコメントで解決する。
+- レビューはGitHub上で非同期に実施する。
 
-## 4) PR Body Template (Minimum)
+## 4) PR本文テンプレート（最低限）
 
-- Objective of the day
-- Output paths
-- Quiz evidence (score 100)
-- Links to resources used
-- Review points
+- 当日の目的
+- 成果物パス
+- クイズ証跡（100点）
+- 参照した教材リンク
+- レビュー観点
 
-## 5) Local Private Context Policy
+## 5) ローカル限定コンテキスト方針
 
-- Public repo must not include confidential internal business details.
-- If internal context is needed, keep it in:
-  - `references/farleap-context.local.md` (gitignored)
+- 公開repoに社内機密情報を含めない。
+- 内部コンテキストが必要な場合は以下に保存する。
+  - `references/farleap-context.local.md`（gitignore対象）

@@ -1,32 +1,32 @@
-# Day XX Output Template
+# Day XX 成果物テンプレート
 
-## Objective
+## Objective（目的）
 
-- What this day is intended to achieve
+- 当日の到達目標を記載
 
 ## Outputs
 
-### 1) Main Artifact
+### 1) Main Artifact（主成果物）
 
 - Path: `training/day-xx/<artifact>.md`
-- Summary:
+- Summary（要約）:
 
-### 2) Supporting Artifact(s)
+### 2) Supporting Artifact(s)（補助成果物）
 
 - Path:
-- Summary:
+- Summary（要約）:
 
-## Tips Applied
+## Tips Applied（使ったヒント）
 
-- Which hints or practices were used
+- 適用したヒントや実践内容を記載
 
-## Resource Links Used
+## Resource Links Used（参照教材）
 
-- URL / doc path
+- URL / doc path を記載
 
-## Self-Check
+## Self-Check（自己確認）
 
-- [ ] Output paths are correct
-- [ ] Content is review-ready
-- [ ] Daily report is added
-- [ ] Quiz score reached 100
+- [ ] Output path が正しい
+- [ ] レビュー可能な品質になっている
+- [ ] 日報を追加した
+- [ ] クイズ100点を達成した

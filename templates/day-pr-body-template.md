@@ -1,28 +1,28 @@
-## Day Summary
+## Day Summary（当日サマリー）
 
 - Day: DayXX
-- Objective:
+- Objective（目的）:
 
-## Output Paths
+## Output Paths（成果物パス）
 
 - `training/day-xx/...`
 
-## Quiz Evidence (100 Required)
+## Quiz Evidence（100点必須）
 
 - Quiz:
 - Score:
-- Evidence:
+- Evidence（証跡）:
 
-## Slack Notification
+## Slack Notification（通知）
 
 - Channel:
 - Link:
 
-## Review Focus
+## Review Focus（レビュー観点）
 
-- Please focus on:
+- Please focus on（重点確認）:
 
-## Completion Status
+## Completion Status（完了ステータス）
 
-- [ ] Temporary done (PR open + Slack notified + Quiz 100)
-- [ ] Final done (merged)
+- [ ] 暫定完了（PR作成 + Slack通知 + クイズ100）
+- [ ] 最終完了（merge済み）

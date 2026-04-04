@@ -1,50 +1,52 @@
 # Spec AI Training
 
-Public training repository for AI onboarding curriculum.
+AIオンボーディング研修の公開リポジトリ。
 
-## Purpose
+## 目的
 
-- Keep training materials outside private corporate repositories.
-- Let each member clone this repository and progress independently.
-- Standardize daily completion with GitHub workflow.
+- 研修資料をプライベートな業務リポジトリから分離する
+- 各メンバーがこのリポジトリをcloneして自走できる状態を作る
+- 日次完了フローをGitHub運用で標準化する
 
-## Scope
+## 対象範囲
 
-- Day4-Day13 curriculum
-- Learning resources
-- Learning infrastructure and operation rules
+- Day4-Day13 のカリキュラム
+- 学習リソース
+- 学習運用ルール（レビュー、クイズ、完了判定）
 
-## Mandatory Daily Rule (After Git/GitHub lesson)
+## 日次必須ルール（Git/GitHubレッスン後）
 
-From Day5 onward, daily completion is defined as:
+Day5以降の1日完了条件は以下。
 
-1. Push outputs to personal repository (`training/day-xx/`)
-2. Create PR
-3. Confirm GitHub-to-Slack notification
-4. Address review comments
-5. Merge PR
+1. 当日成果物を個人リポジトリへPush（`training/day-xx/`）
+2. PR作成
+3. GitHub -> Slack 通知を確認
+4. レビューコメントを反映
+5. PRをMerge
 
-If not merged, the day is not complete.
+Mergeされていない場合、その日は未完了扱い。
 
-## Quiz Gate
+## クイズゲート
 
-- Google Forms auto-graded quizzes are used for comprehension checks.
-- Required score is 100%.
-- Retake is unlimited within the same day.
+- 理解度チェックは Google Forms の自動採点を利用
+- 合格基準は100点
+- 当日内の再受験は無制限
 
-## Repository Structure
+## リポジトリ構成
 
-- `curriculum.md`: Day-by-day plan
-- `resources.md`: Reference videos/blogs/official docs
-- `learning-infrastructure.md`: execution loop, review loop, quiz loop
-- `CONTRIBUTING.md`: contribution and PR rules
-- `templates/`: reusable day output, PR body, and daily report templates
-- `references/`: template files are tracked; only `references/farleap-context.local.md` is gitignored
+- `curriculum.md`: 日別カリキュラム
+- `resources.md`: 参考教材（動画、記事、公式ドキュメント）
+- `learning-infrastructure.md`: 実行ループ、レビュー運用、クイズ運用
+- `CONTRIBUTING.md`: 運用ルールとPRルール
+- `templates/`: 日次アウトプット/PR本文/日報テンプレート
+- `references/`: テンプレートは追跡対象、`references/farleap-context.local.md` のみgitignore対象
 
-## Local Private Context
+## ローカル限定コンテキスト
 
-If a member needs internal business context, use a local file:
+業務上の内部コンテキストが必要な場合は、ローカル専用ファイルを利用する。
 
-- `references/farleap-context.local.md` (gitignored)
+- `references/farleap-context.local.md`（gitignore）
 
-Use `references/farleap-context.example.md` as a template.
+テンプレートは以下を使用。
+
+- `references/farleap-context.example.md`

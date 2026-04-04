@@ -1,19 +1,19 @@
 # Day X — [Name] — [Date]
 
-## Done (3-5 items)
+## Done（3-5項目）
 
 - 
 - 
 - 
 
-## Best AI Usage Today
+## Best AI Usage Today（今日のベスト活用）
 
-One concrete usage that saved time or improved quality.
+時間短縮または品質向上につながった具体例を1つ書く。
 
-## Struggled With
+## Struggled With（詰まった点）
 
-What was difficult and why.
+何が難しかったか、なぜ詰まったかを書く。
 
-## Next Action
+## Next Action（次アクション）
 
-What will be tried next.
+次に試すことを書く。

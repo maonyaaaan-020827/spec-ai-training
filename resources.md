@@ -1,15 +1,15 @@
-# AI Boot Camp Resources
+# AI Boot Camp リソース集
 
-Last updated: 2026-04-04
+最終更新: 2026-04-04
 
-## Day4 Foundations
+## Day4 基礎学習
 
-### AI Landscape / Tool Comparison
+### AI全体像 / ツール比較
 
-- Mainstream AI player overview (market map articles)
-- Official product docs for Gemini, Claude, ChatGPT
+- 主流AIプレイヤーの全体像（市場マップ系記事）
+- Gemini / Claude / ChatGPT の公式ドキュメント
 
-### Minimum Terms
+### 最低限用語
 
 - Token / Context / Prompt / LLM / LLM kinds
 - Agent / Autonomous AI / RAG / OCR / Plan Mode
@@ -17,29 +17,29 @@ Last updated: 2026-04-04
 
 ### Git / GitHub / PR / Slack
 
-- GitHub Flow official docs
-- Pull Request collaboration guide
-- GitHub for Slack official integration guide
+- GitHub Flow 公式ドキュメント
+- Pull Request コラボレーションガイド
+- GitHub for Slack 公式連携ガイド
 
-### Quiz System
+### クイズ運用
 
-- Google Forms auto-grading guide
-- Google Forms response management guide
+- Google Forms 自動採点ガイド
+- Google Forms 回答管理ガイド
 
 ## Day5-Day8
 
-- Deep Research docs (Gemini / ChatGPT)
-- Hallucination and fact-checking references
-- Privacy and security basics for AI usage
-- Writing and GTM examples
+- Deep Research関連ドキュメント（Gemini / ChatGPT）
+- ハルシネーション対策とファクトチェック参考資料
+- AI利用時のプライバシー/セキュリティ基礎
+- ライティングとGTMの実例
 
 ## Day9-Day13
 
-- Cursor / v0 / Stitch onboarding references
-- Vercel deployment references
-- PR review checklist references
+- Cursor / v0 / Stitch のオンボーディング資料
+- Vercel デプロイ資料
+- PRレビューのチェックリスト資料
 
-## Notes
+## 備考
 
-- Low-layer architecture resources (e.g., Transformer internals) are optional only.
-- Boot camp requirement is practical operation and decision-making, not deep model theory.
+- 低レイヤーの理論資料（例: Transformer内部）は任意閲覧とする。
+- 研修要件は実務運用と判断力であり、モデル理論の深掘りではない。

@@ -1,63 +1,63 @@
-# Contributing Guide
+# 運用・貢献ガイド
 
-This repository is the single source of truth for AI training operations.
+このリポジトリはAI研修運用の single source of truth とする。
 
-## Branch Strategy
+## ブランチ運用
 
-- Branch name: `training/day-xx-<topic>`
-- Keep each PR focused on one day or one operation change.
+- ブランチ名: `training/day-xx-<topic>`
+- 1つのPRは1日分、または1つの運用変更に集中させる
 
-## Commit Style
+## コミットスタイル
 
-- Use conventional style where possible:
-  - `docs:` curriculum/resource/process updates
-  - `chore:` non-content operational setup
-  - `feat:` new training capability
-  - `fix:` corrections for broken flow or errors
+- 可能な限りConventional Commitを使う:
+  - `docs:` カリキュラム、教材、運用ドキュメント更新
+  - `chore:` 非コンテンツ系の運用設定
+  - `feat:` 新しい研修機能追加
+  - `fix:` 運用不整合や誤りの修正
 
-## PR Requirements
+## PR必須項目
 
-Every daily PR must include:
+日次PRには以下を必ず含める。
 
-1. Day objective
-2. Output paths
-3. Quiz evidence (score 100)
-4. Slack notification link
-5. Review focus
+1. 当日の目的
+2. 成果物パス
+3. クイズ証跡（100点）
+4. Slack通知リンク
+5. レビューしてほしい観点
 
-Use:
+利用テンプレート:
 
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `templates/day-pr-body-template.md`
 
-## Day Output Convention
+## 日次成果物の配置ルール
 
-Place outputs under:
+成果物は以下に配置する。
 
 - `training/day-xx/`
 
-Recommended minimum files:
+最低限推奨するファイル:
 
 - `daily-report.md`
-- one or more task outputs (`*.md` or project files)
+- 課題成果物1点以上（`*.md` またはプロジェクトファイル）
 
-Use:
+利用テンプレート:
 
 - `templates/day-output-template.md`
 
-## Quiz Gate Rule
+## クイズゲート運用
 
-- Completion requires quiz score 100.
-- Same-day retake is unlimited.
-- If review is delayed, temporary done status is allowed only when:
-  - PR opened
-  - Slack notification confirmed
-  - Quiz score 100
+- 完了判定にはクイズ100点が必須。
+- 当日内の再受験は無制限。
+- レビューが遅延する場合は、以下で暫定完了を認める。
+  - PR作成済み
+  - Slack通知確認済み
+  - クイズ100点達成
 
-Final completion is recorded after merge.
+最終完了はMerge後に確定する。
 
-## Sensitive Data Rule
+## 機密情報ルール
 
-- Do not commit internal confidential materials.
-- Put local-only business context in:
-  - `references/farleap-context.local.md` (gitignored)
+- 社内機密情報はコミットしない。
+- 業務コンテキストはローカル専用ファイルに保存する。
+  - `references/farleap-context.local.md`（gitignore対象）

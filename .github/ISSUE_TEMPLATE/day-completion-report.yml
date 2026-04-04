@@ -1,6 +1,6 @@
-name: Day Completion Report
-description: Report daily completion status and blockers.
-title: "DayXX completion report - <name>"
+name: Day完了レポート
+description: 当日の完了状況とブロッカーを報告する
+title: "DayXX 完了レポート - <name>"
 labels:
   - day-report
 body:
@@ -8,7 +8,7 @@ body:
     id: day
     attributes:
       label: Day
-      description: e.g. Day05
+      description: 例: Day05
       placeholder: Day05
     validations:
       required: true
@@ -16,8 +16,8 @@ body:
   - type: input
     id: member
     attributes:
-      label: Member
-      placeholder: your name
+      label: Member（担当者）
+      placeholder: 名前
     validations:
       required: true
 
@@ -32,7 +32,7 @@ body:
   - type: input
     id: slack_url
     attributes:
-      label: Slack notification URL
+      label: Slack通知URL
       placeholder: https://...
     validations:
       required: true
@@ -40,8 +40,8 @@ body:
   - type: input
     id: quiz_score
     attributes:
-      label: Quiz score
-      description: Must be 100 for final completion.
+      label: クイズスコア
+      description: 最終完了には100点が必須
       placeholder: 100
     validations:
       required: true
@@ -49,8 +49,8 @@ body:
   - type: textarea
     id: outputs
     attributes:
-      label: Output paths
-      description: List files produced for the day.
+      label: 成果物パス
+      description: 当日作成したファイルを列挙
       placeholder: |
         training/day-xx/file1.md
         training/day-xx/file2.md
@@ -60,16 +60,16 @@ body:
   - type: dropdown
     id: status
     attributes:
-      label: Completion status
+      label: 完了ステータス
       options:
-        - Temporary done (PR open, quiz 100, waiting review)
-        - Final done (merged)
-        - Blocked
+        - 暫定完了（PR作成、クイズ100、レビュー待ち）
+        - 最終完了（merge済み）
+        - Blocked（ブロック中）
     validations:
       required: true
 
   - type: textarea
     id: blockers
     attributes:
-      label: Blockers or notes
-      placeholder: Write blockers if any.
+      label: ブロッカー / 補足
+      placeholder: ブロッカーがあれば記載
