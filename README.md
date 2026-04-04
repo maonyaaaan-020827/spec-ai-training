@@ -616,6 +616,7 @@ git push origin training/day-XX-テーマ名
 2. ページ上部に黄色い **「Compare & pull request」** バナーが表示されるので、クリックします
    - バナーが表示されない場合は、「Pull requests」タブ → 「New pull request」をクリックしてください
 3. PR作成画面が表示されます:
+   - **base repository**: **自分のフォーク**（`あなたのユーザー名/spec-ai-training`）になっていることを確認してください。デフォルトで親リポジトリ（`SHU-T0/spec-ai-training`）が選択されている場合は、ドロップダウンをクリックして自分のリポジトリに変更してください
    - **base**: `main` になっていることを確認
    - **compare**: 今作成したブランチ（例: `training/day-05-research`）が選択されていることを確認
 4. **タイトル**: `Day XX 成果物提出` のように入力します（例: `Day 05 成果物提出`）

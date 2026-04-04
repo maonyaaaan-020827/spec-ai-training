@@ -148,7 +148,9 @@ open training/day-04
 - 方法1: Finder 上で右クリック → テキストエディット（Mac 標準アプリ）などで新しいファイルを作成し、ファイル名を `ai-foundation-map.md` にして保存
 - 方法2: ターミナルで `touch training/day-04/ai-foundation-map.md` を実行してからエディタで開く
 
-> `.md` はMarkdown（マークダウン）形式のファイルです。テキストファイルと同じように文字を書けます。特別なソフトは不要で、テキストエディット（Mac 標準）で作成・編集できます。
+> `.md` はMarkdown（マークダウン）形式のファイルです。テキストファイルと同じように文字を書けます。
+
+> **Mac のテキストエディットを使う場合の注意**: テキストエディットはデフォルトでリッチテキスト（.rtf）形式で保存します。`.md` ファイルを正しく作成するには、メニューの **「フォーマット」→「標準テキストにする」** を選んでからファイルを作成・保存してください。これをしないと、ファイルの中身が壊れて Git で正しく管理できません。
 
 **Step 3: 変更をステージングする**
 
@@ -211,6 +213,8 @@ To github.com:あなたのユーザー名/spec-ai-training.git
 2. ページ上部に黄色いバナーで「training/day-04-ai-foundation had recent pushes...」と表示される
 3. 「Compare & pull request」ボタンをクリック
 4. PR作成画面が開く:
+   - **base repository**: **自分のリポジトリ**（`あなたのユーザー名/spec-ai-training`）になっていることを確認。親リポジトリ（`SHU-T0/spec-ai-training`）が選ばれている場合は、ドロップダウンで自分のリポジトリに変更する
+   - **base**: `main`
    - **タイトル**: `Day4: AI全体像マップ + 用語ハンドブック`
    - **本文**: テンプレートに記入する（`templates/day-pr-body-template.md` を参照）
 5. 「Create pull request」ボタンをクリック
