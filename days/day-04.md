@@ -341,6 +341,8 @@ git push origin training/day-04-tool-comparison
 | `fatal: not a git repository` | `spec-ai-training` フォルダの中にいない → `cd ~/Desktop/spec-ai-training` |
 | `error: failed to push` | 同名ブランチが既にある → ブランチ名を変更（例: `-v2` を末尾に追加） |
 
+> **上記以外のエラーが出たら?** エラーメッセージをそのまま Claude や ChatGPT にコピペして聞くのが最速。Git は初めてだとつまずきやすいツールなので、一人で悩まず AI に頼ること。
+
 ---
 
 ## Weekend Mission
@@ -355,6 +357,7 @@ git push origin training/day-04-tool-comparison
 - 3ツール比較は完璧を目指さなくてOK。Day1-3 で触った範囲でまとめる
 - 用語ハンドブックは「自分の言葉で説明できるか」がチェック基準。AIの出力のコピペは不可
 - Git操作は「覚える」より「やってみる」が最速。エラーが出ても壊れないので安心して実行すること
+- **Git でうまくいかないときは、迷わず AI に聞くこと。** エラーメッセージをそのままコピペして「このエラーの意味と対処法を教えて」と聞けば、大抵解決できる。Git は初学者がつまずきやすいツールなので、一人で悩まず AI を活用するのが正しいやり方
 - PRテンプレートは `templates/day-pr-body-template.md` にある。コピーして使う
 
 ## 提出方法
