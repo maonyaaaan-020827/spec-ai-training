@@ -53,12 +53,12 @@
 - Pull Request の使い方: GitHub Docs > "About pull requests" を検索
 - GitHub for Slack 連携: GitHub Docs > "GitHub and Slack" を検索
 
-### Day5 — 4/7: リサーチ実務 + ハルシネーション対策
+### Day5 — 4/7: リサーチ実務
 
 - Gemini Deep Research: Gemini 内で "Deep Research" モードを選択して実行
 - ChatGPT Deep Research: ChatGPT 内で "Deep research" を選択（Plus プラン必要）
-- ファクトチェックの基本: 一次ソースへの遡り方、引用URLの検証方法
-- AI出力の信頼性評価: 「数値」「固有名詞」「日付」は特にハルシネーションが起きやすい
+- AIリサーチの注意点: 重要な数値・固有名詞はAI以外の情報源でも確認する習慣をつける
+- 複数ツール活用: 同一テーマで複数AIを使うと多角的な情報が得られる
 
 ### Day6 — 4/8: 展示会視察 + 視察レポート作成【半日】
 

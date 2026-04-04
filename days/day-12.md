@@ -171,14 +171,23 @@ Day11 と同じ形式で以下を作成する:
 
 ## Git操作（研修リポジトリへの提出）
 
+Ghostty（またはターミナル.app / Git Bash）を開いて、研修リポジトリに移動します。
+
 ```bash
-cd spec-ai-training
+# 研修リポジトリに移動（クローン先がデスクトップの場合）
+cd ~/Desktop/spec-ai-training
 git pull origin main
 git checkout -b training/day-12-project-b
 
 mkdir -p training/day-12
+```
 
-# (ファイル作成後)
+**ファイルの作り方:**
+- 方法1: Finderで `training/day-12/` フォルダを開き、テキストエディタ（メモ帳等）で新しいファイルを作成して、ファイル名を `project-b-requirements.md` にして保存
+- 方法2: ターミナルで `touch training/day-12/project-b-requirements.md` を実行してからエディタで開く
+
+```bash
+# (ファイルを作成・編集した後)
 git add training/day-12/
 git status
 ```
@@ -223,7 +232,7 @@ git push origin training/day-12-project-b
 
 ## 理解度チェック（クイズ）
 
-- `quizzes/index.html` をブラウザで開く
+- `quizzes/index.html` をブラウザで開く（ファイルをダブルクリック、または Chrome にドラッグ&ドロップ）
 - 自分の名前を入力する
 - 「Day12」を選択してクイズを受ける
 - 100点になるまで何度でも再受験可能

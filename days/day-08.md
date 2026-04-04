@@ -128,9 +128,9 @@ X（Twitter）の投稿を作ってください。
 4. ターゲット別の推奨メッセージ
 ```
 
-**Step 3: Day5のファクトチェック手法を適用する**
+**Step 3: AI出力の信頼性を確認する**
 
-AI が出力した競合情報のうち、以下を確認する:
+AI が出力した競合情報のうち、重要な内容は公式サイト等で確認する:
 - 企業名は実在するか
 - サービス内容は正確か
 - 価格情報は最新か
@@ -141,14 +141,23 @@ AI が出力した競合情報のうち、以下を確認する:
 
 ## Git操作
 
+Ghostty（またはターミナル.app / Git Bash）を開いて、リポジトリフォルダに移動します。
+
 ```bash
-cd spec-ai-training
+# 研修リポジトリに移動（クローン先がデスクトップの場合）
+cd ~/Desktop/spec-ai-training
 git pull origin main
 git checkout -b training/day-08-gtm-differentiation
 
 mkdir -p training/day-08
+```
 
-# (ファイル作成後)
+**ファイルの作り方:**
+- 方法1: Finderで `training/day-08/` フォルダを開き、テキストエディタ（メモ帳等）で新しいファイルを作成して、ファイル名を `content-drafts.md` にして保存
+- 方法2: ターミナルで `touch training/day-08/content-drafts.md` を実行してからエディタで開く
+
+```bash
+# (ファイルを作成・編集した後)
 git add training/day-08/
 git status
 ```
@@ -194,7 +203,7 @@ git push origin training/day-08-gtm-differentiation
 
 ## 理解度チェック（クイズ）
 
-- `quizzes/index.html` をブラウザで開く
+- `quizzes/index.html` をブラウザで開く（ファイルをダブルクリック、または Chrome にドラッグ&ドロップ）
 - 自分の名前を入力する
 - 「Day8」を選択してクイズを受ける
 - 100点になるまで何度でも再受験可能
@@ -214,7 +223,7 @@ git push origin training/day-08-gtm-differentiation
 
 ## 参考リソース
 
-- Day5 のファクトチェック手法（競合情報の検証に活用）
+- Day5 のリサーチレポート（リサーチ手法の参考に）
 - Day6 の展示会視察レポート（実務コンテンツの素材として）
 - Day7 の人間/AI役割分担マトリクス（コンテンツ作成での役割分担参照）
 - `CONTRIBUTING.md` — PR作成の規約

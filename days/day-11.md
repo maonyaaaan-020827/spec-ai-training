@@ -243,15 +243,23 @@ git push origin main
 
 ## Git操作（研修リポジトリへの提出）
 
+Ghostty（またはターミナル.app / Git Bash）を開いて、研修リポジトリに移動します（project-a とは別のフォルダです）。
+
 ```bash
-# 研修リポジトリに移動（project-a とは別）
-cd spec-ai-training
+# 研修リポジトリに移動（クローン先がデスクトップの場合）
+cd ~/Desktop/spec-ai-training
 git pull origin main
 git checkout -b training/day-11-project-a-deploy
 
 mkdir -p training/day-11
+```
 
-# (ファイル作成後)
+**ファイルの作り方:**
+- 方法1: Finderで `training/day-11/` フォルダを開き、テキストエディタ（メモ帳等）で新しいファイルを作成して、ファイル名を `project-a-release-note.md` にして保存
+- 方法2: ターミナルで `touch training/day-11/project-a-release-note.md` を実行してからエディタで開く
+
+```bash
+# (ファイルを作成・編集した後)
 git add training/day-11/
 git status
 ```
@@ -296,7 +304,7 @@ git push origin training/day-11-project-a-deploy
 
 ## 理解度チェック（クイズ）
 
-- `quizzes/index.html` をブラウザで開く
+- `quizzes/index.html` をブラウザで開く（ファイルをダブルクリック、または Chrome にドラッグ&ドロップ）
 - 自分の名前を入力する
 - 「Day11」を選択してクイズを受ける
 - 100点になるまで何度でも再受験可能

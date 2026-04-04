@@ -81,7 +81,10 @@ AI の出力に以下を追記する:
 
 **前提確認:**
 
-ターミナル（Mac: ターミナル.app）を開いて、以下を実行する。
+> **ターミナルとは？** コマンド（命令文）を入力してPCを操作するアプリです。Day4以降は毎日使います。
+> まだインストールしていない方は、`README.md` のセクション「2. 研修を始める前に必要なもの」を参照してください。
+
+Ghostty（またはターミナル.app / Git Bash）を開いて、以下を実行する。
 
 ```bash
 # Git がインストールされているか確認
@@ -96,15 +99,11 @@ git version 2.39.5 (Apple Git-154)
 表示されない場合: `account-setup.md` の Git 初期設定を先に完了する。
 
 ```bash
-# 研修リポジトリに移動する
-cd spec-ai-training
+# 研修リポジトリに移動する（クローン先がデスクトップの場合）
+cd ~/Desktop/spec-ai-training
 ```
 
-表示がエラーになる場合: リポジトリの clone がまだ。以下を実行する:
-```bash
-git clone git@github.com:あなたのユーザー名/spec-ai-training.git
-cd spec-ai-training
-```
+表示がエラーになる場合: リポジトリの clone がまだ。`README.md` のセクション「5. フォークしたリポジトリをクローンする」を参照して clone を実行する。
 
 **Step 1: ブランチを作成する**
 
@@ -130,11 +129,17 @@ Switched to a new branch 'training/day-04-ai-foundation'
 mkdir -p training/day-04
 ```
 
-以下のファイルを作成する（テキストエディタ、VS Code、メモ帳など何でもOK）:
+以下のファイルを作成する:
 
 - `training/day-04/ai-foundation-map.md` — 課題1の成果物
 - `training/day-04/ai-glossary.md` — 課題2の成果物
 - `training/day-04/daily-report.md` — 日報（テンプレート: `templates/daily-report-template.md`）
+
+**ファイルの作り方:**
+- 方法1: Finderで `training/day-04/` フォルダを開き、テキストエディタ（メモ帳等）で新しいファイルを作成して、ファイル名を `ai-foundation-map.md` にして保存
+- 方法2: ターミナルで `touch training/day-04/ai-foundation-map.md` を実行してからエディタで開く
+
+> `.md` はMarkdown（マークダウン）形式のファイルです。テキストファイルと同じように文字を書けます。特別なソフトは不要で、メモ帳やテキストエディットで作成・編集できます。
 
 **Step 3: 変更をステージングする**
 
@@ -231,7 +236,7 @@ To github.com:あなたのユーザー名/spec-ai-training.git
 
 ## 理解度チェック（クイズ）
 
-- `quizzes/index.html` をブラウザで開く
+- `quizzes/index.html` をブラウザで開く（ファイルをダブルクリック、または Chrome にドラッグ&ドロップ）
 - 自分の名前を入力する
 - 「Day4」を選択してクイズを受ける
 - 100点になるまで何度でも再受験可能

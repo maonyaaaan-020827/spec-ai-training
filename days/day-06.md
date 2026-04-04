@@ -70,14 +70,23 @@ AI の出力に以下を追加する:
 
 ## Git操作
 
+Ghostty（またはターミナル.app / Git Bash）を開いて、リポジトリフォルダに移動します。
+
 ```bash
-cd spec-ai-training
+# 研修リポジトリに移動（クローン先がデスクトップの場合）
+cd ~/Desktop/spec-ai-training
 git pull origin main
 git checkout -b training/day-06-exhibition-report
 
 mkdir -p training/day-06
+```
 
-# (ファイル作成後)
+**ファイルの作り方:**
+- 方法1: Finderで `training/day-06/` フォルダを開き、テキストエディタ（メモ帳等）で新しいファイルを作成して、ファイル名を `exhibition-visit-report.md` にして保存
+- 方法2: ターミナルで `touch training/day-06/exhibition-visit-report.md` を実行してからエディタで開く
+
+```bash
+# (ファイルを作成・編集した後)
 git add training/day-06/
 git status
 ```
@@ -119,7 +128,7 @@ git push origin training/day-06-exhibition-report
 
 ## 理解度チェック（クイズ）
 
-- `quizzes/index.html` をブラウザで開く
+- `quizzes/index.html` をブラウザで開く（ファイルをダブルクリック、または Chrome にドラッグ&ドロップ）
 - 自分の名前を入力する
 - 「Day6」を選択してクイズを受ける
 - 100点になるまで何度でも再受験可能

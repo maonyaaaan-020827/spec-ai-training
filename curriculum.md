@@ -13,7 +13,7 @@
 | Day2 | 4/2 (木) | Claude製品リサーチ | [day-02.md](days/day-02.md) |
 | Day3 | 4/3 (金) | ChatGPT Deep Research + ツール比較 | [day-03.md](days/day-03.md) |
 | Day4 | 4/6 (月) | AI全体像 + GitHub基礎 | [day-04.md](days/day-04.md) |
-| Day5 | 4/7 (火) | リサーチ実務 + ハルシネーション対策 | [day-05.md](days/day-05.md) |
+| Day5 | 4/7 (火) | リサーチ実務 | [day-05.md](days/day-05.md) |
 | Day6 | 4/8 (水) | 展示会視察 + 視察レポート作成【半日】 | [day-06.md](days/day-06.md) |
 | Day7 | 4/9 (木) | 資料作成実務 + 人間/AI役割分担 | [day-07.md](days/day-07.md) |
 | Day8 | 4/10 (金) | GTM実務 + 差別化整理 | [day-08.md](days/day-08.md) |
