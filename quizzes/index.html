@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Training Bootcamp Quiz</title>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue-700);
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 24px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* Name input */
+.name-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.name-input-group label {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 0.95rem;
+}
+
+.name-input-group input {
+  padding: 12px 16px;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.name-input-group input:focus {
+  border-color: var(--blue-500);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--blue-600);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--blue-700); }
+
+.btn-success {
+  background: var(--green-600);
+  color: #fff;
+}
+.btn-success:hover { background: var(--green-700); }
+
+.btn-danger {
+  background: var(--red-500);
+  color: #fff;
+}
+.btn-danger:hover { background: var(--red-600); }
+
+.btn-outline {
+  background: #fff;
+  color: var(--blue-600);
+  border: 2px solid var(--blue-600);
+}
+.btn-outline:hover {
+  background: var(--blue-50);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+/* User bar */
+.user-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.user-bar .user-name {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.user-bar button {
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.user-bar button:hover {
+  color: var(--red-500);
+  background: var(--red-50);
+}
+
+/* Day grid */
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.day-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.day-card:hover {
+  border-color: var(--blue-500);
+  box-shadow: var(--shadow-md);
+}
+
+.day-card.passed {
+  border-color: var(--green-500);
+  background: var(--green-50);
+}
+
+.day-card .day-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--blue-700);
+  white-space: nowrap;
+}
+
+.day-card.passed .day-num {
+  color: var(--green-700);
+}
+
+.day-card .day-title {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.day-card .day-status {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Progress bar */
+.progress-section {
+  margin-bottom: 24px;
+}
+
+.progress-section h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-500), var(--green-600));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Quiz screen */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.quiz-header h2 {
+  margin-bottom: 0;
+}
+
+.quiz-header .back-link {
+  color: var(--gray-400);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.quiz-header .back-link:hover {
+  color: var(--blue-600);
+}
+
+.question-card {
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 2px solid transparent;
+}
+
+.question-card.correct {
+  border-color: var(--green-500);
+  background: var(--green-50);
+}
+
+.question-card.wrong {
+  border-color: var(--red-500);
+  background: var(--red-50);
+}
+
+.question-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.question-text {
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.option-label:hover {
+  border-color: var(--blue-300);
+  background: var(--blue-50);
+}
+
+.option-label input[type="radio"] {
+  margin-top: 4px;
+  flex-shrink: 0;
+  accent-color: var(--blue-600);
+}
+
+.option-label.selected {
+  border-color: var(--blue-500);
+  background: var(--blue-50);
+}
+
+.option-label.correct-answer {
+  border-color: var(--green-500);
+  background: var(--green-50);
+}
+
+.option-label.wrong-answer {
+  border-color: var(--red-500);
+  background: var(--red-50);
+}
+
+.correct-indicator {
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.correct-indicator.show {
+  display: inline-block;
+}
+
+.correct-indicator.is-correct {
+  color: var(--green-700);
+  background: var(--green-100);
+}
+
+.correct-indicator.is-wrong {
+  color: var(--red-600);
+  background: var(--red-100);
+}
+
+.submit-area {
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* Results */
+.result-banner {
+  text-align: center;
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+}
+
+.result-banner.pass {
+  background: linear-gradient(135deg, var(--green-50), var(--green-100));
+  border: 2px solid var(--green-500);
+}
+
+.result-banner.fail {
+  background: linear-gradient(135deg, var(--red-50), var(--red-100));
+  border: 2px solid var(--red-500);
+}
+
+.result-banner .result-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.result-banner .result-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.result-banner.pass .result-title { color: var(--green-700); }
+.result-banner.fail .result-title { color: var(--red-600); }
+
+.result-banner .result-score {
+  font-size: 1.1rem;
+  color: var(--gray-600);
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* Pass (certificate) screen */
+.cert-screen {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.cert-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 30%, #bbf7d0 100%);
+  border: 3px solid var(--green-500);
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cert-badge {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.cert-title {
+  font-size: 1.1rem;
+  color: var(--green-700);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cert-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.cert-day {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue-700);
+  margin-bottom: 12px;
+}
+
+.cert-score {
+  display: inline-block;
+  background: var(--green-600);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 8px 32px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.cert-date {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+.cert-footer {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: var(--gray-400);
+}
+
+.cert-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container { padding: 16px 12px; }
+  .card { padding: 24px 16px; }
+  .day-grid { grid-template-columns: 1fr; }
+  .cert-name { font-size: 1.5rem; }
+  .cert-score { font-size: 1.25rem; }
+  .result-actions { flex-direction: column; }
+  .cert-actions { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="app">
+
+  <!-- Screen: Name Input -->
+  <div class="screen active" id="screen-name">
+    <div class="header">
+      <h1>AI Training Bootcamp</h1>
+      <p>Quiz</p>
+    </div>
+    <div class="card">
+      <h2>ようこそ</h2>
+      <div class="name-input-group">
+        <label for="nameInput">お名前を入力してください</label>
+        <input type="text" id="nameInput" placeholder="例: 田中太郎" autocomplete="off">
+        <button class="btn btn-primary btn-block" id="nameSubmit" onclick="submitName()">はじめる</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen: Day Selection -->
+  <div class="screen" id="screen-days">
+    <div class="header">
+      <h1>AI Training Bootcamp</h1>
+      <p>Quiz</p>
+    </div>
+    <div class="user-bar">
+      <span class="user-name" id="displayName"></span>
+      <button onclick="logout()">ログアウト</button>
+    </div>
+    <div class="progress-section">
+      <h3>全クイズ進捗</h3>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+      <div class="progress-text" id="progressText">0 / 9 合格</div>
+    </div>
+    <div class="card">
+      <h2>クイズを選択</h2>
+      <div class="day-grid" id="dayGrid"></div>
+    </div>
+  </div>
+
+  <!-- Screen: Quiz -->
+  <div class="screen" id="screen-quiz">
+    <div class="header">
+      <h1>AI Training Bootcamp</h1>
+      <p>Quiz</p>
+    </div>
+    <div class="user-bar">
+      <span class="user-name" id="quizUserName"></span>
+      <button onclick="logout()">ログアウト</button>
+    </div>
+    <div class="quiz-header">
+      <h2 id="quizTitle"></h2>
+      <a class="back-link" onclick="showDays()">&#8592; 戻る</a>
+    </div>
+    <div id="quizQuestions"></div>
+    <div class="submit-area">
+      <button class="btn btn-primary btn-block" onclick="submitQuiz()">回答を提出する</button>
+    </div>
+  </div>
+
+  <!-- Screen: Results (not 100%) -->
+  <div class="screen" id="screen-results">
+    <div class="header">
+      <h1>AI Training Bootcamp</h1>
+      <p>Quiz</p>
+    </div>
+    <div class="result-banner fail" id="resultBanner">
+      <div class="result-icon">&#10060;</div>
+      <div class="result-title" id="resultTitle">不合格</div>
+      <div class="result-score" id="resultScore"></div>
+    </div>
+    <div id="resultDetails"></div>
+    <div class="result-actions">
+      <button class="btn btn-danger" onclick="retryQuiz()">もう一度挑戦する</button>
+      <button class="btn btn-outline" onclick="showDays()">クイズ選択に戻る</button>
+    </div>
+  </div>
+
+  <!-- Screen: Pass (certificate) -->
+  <div class="screen" id="screen-pass">
+    <div class="cert-screen">
+      <div class="cert-card">
+        <div class="cert-badge">&#127942;</div>
+        <div class="cert-title">AI Training Bootcamp Quiz</div>
+        <div class="cert-name" id="certName"></div>
+        <div class="cert-day" id="certDay"></div>
+        <div class="cert-score">100&#28857; &#21512;&#26684;</div>
+        <div class="cert-date" id="certDate"></div>
+        <div class="cert-footer">&#8251; &#12371;&#12398;&#30011;&#38754;&#12434;&#12473;&#12463;&#12522;&#12540;&#12531;&#12471;&#12519;&#12483;&#12488;&#12375;&#12390;&#21512;&#26684;&#35388;&#26126;&#12392;&#12375;&#12390;&#12372;&#25552;&#20986;&#12367;&#12384;&#12373;&#12356;</div>
+      </div>
+      <div class="cert-actions">
+        <button class="btn btn-success" onclick="showDays()">クイズ選択に戻る</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// Quiz Data
+// ============================================================
+var quizData = {
+  4: {
+    title: "Day4: AI全体像 + GitHub基礎",
+    questions: [
+      {
+        q: "LLMとは何の略ですか？",
+        options: [
+          "Large Language Model（大規模言語モデル）",
+          "Long Learning Machine",
+          "Language Logic Module",
+          "Linear Language Model"
+        ],
+        correct: 0
+      },
+      {
+        q: "「Token」の説明として正しいものはどれですか？",
+        options: [
+          "テキストを処理するための最小単位",
+          "AIの利用料金の単位",
+          "ユーザー認証に使う鍵",
+          "APIアクセスに必要なパスワード"
+        ],
+        correct: 0
+      },
+      {
+        q: "RAGとは何の略ですか？",
+        options: [
+          "Retrieval-Augmented Generation（検索拡張生成）",
+          "Real-time AI Generation",
+          "Random Answer Generator",
+          "Rapid Analysis Gateway"
+        ],
+        correct: 0
+      },
+      {
+        q: "Gitで新しいブランチを作成して切り替えるコマンドはどれですか？",
+        options: [
+          "git checkout -b ブランチ名",
+          "git new ブランチ名",
+          "git create ブランチ名",
+          "git start ブランチ名"
+        ],
+        correct: 0
+      },
+      {
+        q: "Pull Request（PR）の目的として最も適切なものはどれですか？",
+        options: [
+          "コードの変更をレビューしてもらい、マージ（統合）すること",
+          "コードをバックアップすること",
+          "ファイルをダウンロードすること",
+          "エラーを自動修正すること"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  5: {
+    title: "Day5: リサーチ実務 + ハルシネーション対策",
+    questions: [
+      {
+        q: "「ハルシネーション」とは何ですか？",
+        options: [
+          "AIがもっともらしいが事実ではない情報を生成すること",
+          "AIが過負荷で停止すること",
+          "AIの応答速度が遅くなること",
+          "AIが同じ回答を繰り返すこと"
+        ],
+        correct: 0
+      },
+      {
+        q: "AIの出力でファクトチェックが最も重要な要素はどれですか？",
+        options: [
+          "数値・固有名詞・日付",
+          "文章の文法",
+          "回答の長さ",
+          "フォーマットの整合性"
+        ],
+        correct: 0
+      },
+      {
+        q: "ファクトチェックの正しい手順はどれですか？",
+        options: [
+          "AI出力 → ソースURL確認 → 一次ソースで裏取り → 信頼度判定",
+          "AI出力 → 別のAIで確認 → 完了",
+          "AI出力 → 直感で判断 → 修正",
+          "AI出力 → スペルチェック → 完了"
+        ],
+        correct: 0
+      },
+      {
+        q: "「一次ソース」の説明として正しいものはどれですか？",
+        options: [
+          "情報の元となる原典や公式発表",
+          "最初にGoogle検索で見つかるページ",
+          "AIが最初に参照するデータベース",
+          "Wikipediaの記事"
+        ],
+        correct: 0
+      },
+      {
+        q: "Deep Research機能の利点として最も適切なものはどれですか？",
+        options: [
+          "複数のソースを横断的に調査し、包括的なレポートを生成できる",
+          "回答速度が通常モードより速い",
+          "100%正確な情報を保証する",
+          "インターネット接続なしで使える"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  6: {
+    title: "Day6: 展示会視察 + 視察レポート作成",
+    questions: [
+      {
+        q: "展示会視察で注目すべきポイントとして最も重要なものはどれですか？",
+        options: [
+          "ブースの導線設計、デモの見せ方、来場者との会話のきっかけ作り",
+          "会場の空調設備",
+          "他社のブースの面積",
+          "配布されるノベルティの数"
+        ],
+        correct: 0
+      },
+      {
+        q: "展示会視察レポートに含めるべき要素はどれですか？",
+        options: [
+          "注目した企業・プロダクト、展示手法の工夫、自社への示唆",
+          "会場へのアクセス方法",
+          "昼食の場所",
+          "他社の売上予測"
+        ],
+        correct: 0
+      },
+      {
+        q: "AIを使った視察レポート作成の効果的な方法はどれですか？",
+        options: [
+          "視察中のメモ・写真を素材としてAIに入力し、構造化されたレポートを生成する",
+          "AIに展示会の名前だけ伝えてレポートを作らせる",
+          "視察前にAIにレポートを書かせる",
+          "AIは使わず手動で作成する"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  7: {
+    title: "Day7: 資料作成実務 + 人間/AI役割分担",
+    questions: [
+      {
+        q: "AIに資料を作らせる際、最も効果的な手順はどれですか？",
+        options: [
+          "構成 → 各スライドの要点 → 詳細の順で段階的に指示する",
+          "すべての内容を一度に指示する",
+          "詳細から先に書かせて後で構成を考える",
+          "AIに完全にお任せする"
+        ],
+        correct: 0
+      },
+      {
+        q: "「AI向きな作業」の特徴として正しいものはどれですか？",
+        options: [
+          "定型的・大量・下書き作成",
+          "感情を込めた判断",
+          "顧客との関係構築",
+          "倫理的な意思決定"
+        ],
+        correct: 0
+      },
+      {
+        q: "人間/AI役割分担マトリクスの目的は何ですか？",
+        options: [
+          "業務のどの工程をAIに任せ、どこは人間が判断するかの基準を作ること",
+          "AIの利用コストを計算すること",
+          "AIの性能ベンチマークを作ること",
+          "人間の仕事をすべてAIに置き換えること"
+        ],
+        correct: 0
+      },
+      {
+        q: "NotebookLMの主な特徴はどれですか？",
+        options: [
+          "アップロードしたドキュメントをソースとして、その内容に基づいた回答を生成する",
+          "コードを自動生成する",
+          "メールを自動送信する",
+          "スライドを自動デザインする"
+        ],
+        correct: 0
+      },
+      {
+        q: "資料作成でAIを活用する際の正しいサイクルはどれですか？",
+        options: [
+          "AIに書かせる → 人間がレビュー・修正 → 必要に応じて再生成",
+          "AIの出力をそのまま使う",
+          "人間が全部書いてAIに確認させる",
+          "AIに書かせて別のAIにレビューさせるだけ"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  8: {
+    title: "Day8: GTM実務 + 差別化整理",
+    questions: [
+      {
+        q: "GTMとは何の略ですか？",
+        options: [
+          "Go-To-Market（市場投入戦略）",
+          "Global Technology Management",
+          "General Team Meeting",
+          "Growth Target Metrics"
+        ],
+        correct: 0
+      },
+      {
+        q: "コンテンツ作成前に明確にすべき3要素はどれですか？",
+        options: [
+          "誰に・何を・なぜ今",
+          "いつ・どこで・いくら",
+          "長さ・フォーマット・フォント",
+          "ツール・テンプレート・締切"
+        ],
+        correct: 0
+      },
+      {
+        q: "競合との差別化で最も重要なポイントはどれですか？",
+        options: [
+          "競合が言えない（提供できない）ことを見つけること",
+          "競合より安い価格を設定すること",
+          "競合と同じ機能を持つこと",
+          "競合の批判をすること"
+        ],
+        correct: 0
+      },
+      {
+        q: "3C分析の「3つのC」は何ですか？",
+        options: [
+          "Customer（顧客）、Competitor（競合）、Company（自社）",
+          "Cost、Channel、Campaign",
+          "Create、Convert、Close",
+          "Content、Community、Commerce"
+        ],
+        correct: 0
+      },
+      {
+        q: "X（Twitter）投稿をAIで作る効果的な方法はどれですか？",
+        options: [
+          "AIに複数バリエーションを生成させ、その中から最適なものを選ぶ",
+          "AIに1つだけ生成させてそのまま投稿する",
+          "投稿せずにAIの出力を保存するだけ",
+          "AIは使わず手動で作成する"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  9: {
+    title: "Day9: データ分析 + LLM基礎挙動",
+    questions: [
+      {
+        q: "LLMの基本的な動作原理はどれですか？",
+        options: [
+          "入力されたテキストに続く、最も確率の高いTokenを予測する",
+          "インターネットからリアルタイムで情報を検索する",
+          "事前に用意された回答データベースから検索する",
+          "ルールベースの条件分岐で回答を生成する"
+        ],
+        correct: 0
+      },
+      {
+        q: "「コンテキストウィンドウ」とは何ですか？",
+        options: [
+          "LLMが一度に処理できるToken数の上限",
+          "ブラウザのウィンドウサイズ",
+          "AIとの会話を表示する画面",
+          "データベースの検索範囲"
+        ],
+        correct: 0
+      },
+      {
+        q: "温度パラメータが「低い」場合のAI出力の特徴はどれですか？",
+        options: [
+          "安定した（決定的な）出力になる",
+          "より創造的な出力になる",
+          "出力速度が遅くなる",
+          "エラーが多くなる"
+        ],
+        correct: 0
+      },
+      {
+        q: "AIにデータ分析を依頼する際のポイントはどれですか？",
+        options: [
+          "「何を知りたいか」を先に決めてから分析を依頼する",
+          "データをそのまま渡して「分析して」と指示する",
+          "できるだけ多くのデータを一度に渡す",
+          "分析結果を確認せずそのまま使う"
+        ],
+        correct: 0
+      },
+      {
+        q: "「同じ質問をしても毎回違う回答が出る」原因はどれですか？",
+        options: [
+          "温度パラメータによるランダム性があるため",
+          "AIがインターネットから最新情報を取得しているため",
+          "AIが前回の回答を記憶して変えているため",
+          "バグがあるため"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  10: {
+    title: "Day10: Project A 設計",
+    questions: [
+      {
+        q: "要件定義に含めるべき要素として正しいものはどれですか？",
+        options: [
+          "背景、ゴール、スコープ、ターゲットユーザー、主要機能",
+          "プログラミング言語、データベース設計、サーバー構成",
+          "予算、スケジュール、人員配置のみ",
+          "デザインの色、フォント、レイアウトのみ"
+        ],
+        correct: 0
+      },
+      {
+        q: "V0の機能として正しいものはどれですか？",
+        options: [
+          "テキストでUIを指示すると、Reactコードを生成してくれる",
+          "動画を自動編集してくれる",
+          "メールを自動送信してくれる",
+          "データベースを自動構築してくれる"
+        ],
+        correct: 0
+      },
+      {
+        q: "Vercelの主な用途はどれですか？",
+        options: [
+          "Webアプリケーションをインターネットに公開（デプロイ）するプラットフォーム",
+          "コードを書くためのエディタ",
+          "データベースを管理するツール",
+          "チャットコミュニケーションツール"
+        ],
+        correct: 0
+      },
+      {
+        q: "モックアップを作る目的として最も適切なものはどれですか？",
+        options: [
+          "完成形のイメージを確認し、方向性を定めること",
+          "完璧なデザインを最初から作ること",
+          "プログラミングの代わりにすること",
+          "クライアントへの最終納品物にすること"
+        ],
+        correct: 0
+      },
+      {
+        q: "ユーザーストーリーの基本形式はどれですか？",
+        options: [
+          "「〇〇として、△△したい。なぜなら□□だから」",
+          "「〇〇は△△である。以上」",
+          "「もし〇〇なら、△△する」",
+          "「〇〇の手順: 1. 2. 3.」"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  11: {
+    title: "Day11: Project A 実装・デプロイ",
+    questions: [
+      {
+        q: "AIコード生成でエラーが出た場合の最も効果的な対処法はどれですか？",
+        options: [
+          "エラーメッセージをそのままAIに貼り付けて修正を依頼する",
+          "エラーを無視して別の機能を実装する",
+          "最初からすべて書き直す",
+          "自分でエラーの原因を推測して修正する"
+        ],
+        correct: 0
+      },
+      {
+        q: "「デプロイ」とは何ですか？",
+        options: [
+          "作成したアプリをインターネット上に公開し、誰でもアクセスできるようにすること",
+          "コードをGitHubにアップロードすること",
+          "アプリケーションのテストを実行すること",
+          "コードのバックアップを取ること"
+        ],
+        correct: 0
+      },
+      {
+        q: "ROIとは何の略ですか？",
+        options: [
+          "Return On Investment（投資対効果）",
+          "Rate Of Innovation",
+          "Result Of Integration",
+          "Review Of Implementation"
+        ],
+        correct: 0
+      },
+      {
+        q: "プロトタイプ開発で最優先すべきことはどれですか？",
+        options: [
+          "動くものを早く作ること",
+          "コードの美しさを追求すること",
+          "すべての機能を実装すること",
+          "テストを完璧に書くこと"
+        ],
+        correct: 0
+      },
+      {
+        q: "Cursorの主な特徴はどれですか？",
+        options: [
+          "自然言語でコード生成の指示を出せるAIコードエディタ",
+          "Webブラウザベースの表計算ツール",
+          "プレゼンテーション作成ツール",
+          "プロジェクト管理ツール"
+        ],
+        correct: 0
+      }
+    ]
+  },
+  12: {
+    title: "Day12: Project B 設計・実装・デプロイ",
+    questions: [
+      {
+        q: "Project Bのテーマを選ぶ際のポイントはどれですか？",
+        options: [
+          "Project Aとは異なるタイプのプロダクトを選ぶ",
+          "Project Aと同じテーマで改善版を作る",
+          "最も技術的に難しいテーマを選ぶ",
+          "テーマは自分で選ばずAIに決めてもらう"
+        ],
+        correct: 0
+      },
+      {
+        q: "1日でプロダクトを完成させるために最も重要なことはどれですか？",
+        options: [
+          "スピード重視で完璧さより完了を優先する",
+          "完璧なデザインを追求する",
+          "すべてのエラーハンドリングを実装する",
+          "ドキュメントを完璧に書く"
+        ],
+        correct: 0
+      },
+      {
+        q: "Phase 3（開発体験）の目的として最も適切なものはどれですか？",
+        options: [
+          "AIを使えば非エンジニアでもプロダクトを形にできることを体験する",
+          "プログラミング言語を習得する",
+          "エンジニアとして就職できるレベルになる",
+          "複雑なシステムを設計できるようになる"
+        ],
+        correct: 0
+      },
+      {
+        q: "リリースノートに含めるべき要素はどれですか？",
+        options: [
+          "何を作ったか、なぜ作ったか、どう使うか",
+          "ソースコードの全行",
+          "使用したAIへのプロンプト全文",
+          "開発中に発生した全エラーログ"
+        ],
+        correct: 0
+      }
+    ]
+  }
+};
+
+// Day titles for the selection grid
+var dayTitles = {
+  4: "AI全体像 + GitHub基礎",
+  5: "リサーチ実務 + ハルシネーション対策",
+  6: "展示会視察 + 視察レポート作成",
+  7: "資料作成実務 + 人間/AI役割分担",
+  8: "GTM実務 + 差別化整理",
+  9: "データ分析 + LLM基礎挙動",
+  10: "Project A 設計",
+  11: "Project A 実装・デプロイ",
+  12: "Project B 設計・実装・デプロイ"
+};
+
+// ============================================================
+// State
+// ============================================================
+var currentUser = "";
+var currentDay = null;
+var shuffledQuestions = []; // { q, options (shuffled text), correctIdx (in shuffled order) }
+
+// ============================================================
+// Helpers
+// ============================================================
+function getPassKey(name, day) {
+  return "quiz_" + name + "_day" + day;
+}
+
+function hasPassed(name, day) {
+  return localStorage.getItem(getPassKey(name, day)) === "passed";
+}
+
+function markPassed(name, day) {
+  localStorage.setItem(getPassKey(name, day), "passed");
+}
+
+function showScreen(id) {
+  var screens = document.querySelectorAll(".screen");
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].classList.remove("active");
+  }
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0, 0);
+}
+
+// Fisher-Yates shuffle returning new array + mapping
+function shuffleOptions(options, correctIndex) {
+  var indices = [];
+  for (var i = 0; i < options.length; i++) indices.push(i);
+  for (var j = indices.length - 1; j > 0; j--) {
+    var k = Math.floor(Math.random() * (j + 1));
+    var tmp = indices[j];
+    indices[j] = indices[k];
+    indices[k] = tmp;
+  }
+  var shuffled = [];
+  var newCorrect = -1;
+  for (var m = 0; m < indices.length; m++) {
+    shuffled.push(options[indices[m]]);
+    if (indices[m] === correctIndex) newCorrect = m;
+  }
+  return { options: shuffled, correctIdx: newCorrect };
+}
+
+function formatDateTime() {
+  var now = new Date();
+  var y = now.getFullYear();
+  var mo = ("0" + (now.getMonth() + 1)).slice(-2);
+  var d = ("0" + now.getDate()).slice(-2);
+  var h = ("0" + now.getHours()).slice(-2);
+  var mi = ("0" + now.getMinutes()).slice(-2);
+  return y + "/" + mo + "/" + d + " " + h + ":" + mi;
+}
+
+// ============================================================
+// Name Screen
+// ============================================================
+function submitName() {
+  var name = document.getElementById("nameInput").value.trim();
+  if (!name) {
+    document.getElementById("nameInput").focus();
+    return;
+  }
+  currentUser = name;
+  localStorage.setItem("quiz_username", name);
+  showDays();
+}
+
+function logout() {
+  currentUser = "";
+  localStorage.removeItem("quiz_username");
+  document.getElementById("nameInput").value = "";
+  showScreen("screen-name");
+}
+
+// Enter key support for name input
+document.getElementById("nameInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") submitName();
+});
+
+// ============================================================
+// Day Selection Screen
+// ============================================================
+function showDays() {
+  document.getElementById("displayName").textContent = currentUser;
+  renderDayGrid();
+  updateProgress();
+  showScreen("screen-days");
+}
+
+function renderDayGrid() {
+  var grid = document.getElementById("dayGrid");
+  grid.innerHTML = "";
+  var days = [4,5,6,7,8,9,10,11,12];
+  for (var i = 0; i < days.length; i++) {
+    var day = days[i];
+    var passed = hasPassed(currentUser, day);
+    var card = document.createElement("div");
+    card.className = "day-card" + (passed ? " passed" : "");
+    card.setAttribute("data-day", day);
+    card.onclick = (function(d) { return function() { startQuiz(d); }; })(day);
+
+    var numEl = document.createElement("div");
+    numEl.className = "day-num";
+    numEl.textContent = "Day " + day;
+
+    var titleEl = document.createElement("div");
+    titleEl.className = "day-title";
+    titleEl.textContent = dayTitles[day];
+
+    var statusEl = document.createElement("div");
+    statusEl.className = "day-status";
+    statusEl.textContent = passed ? "\u2705" : "\u25CB";
+
+    card.appendChild(numEl);
+    card.appendChild(titleEl);
+    card.appendChild(statusEl);
+    grid.appendChild(card);
+  }
+}
+
+function updateProgress() {
+  var days = [4,5,6,7,8,9,10,11,12];
+  var passedCount = 0;
+  for (var i = 0; i < days.length; i++) {
+    if (hasPassed(currentUser, days[i])) passedCount++;
+  }
+  var pct = Math.round((passedCount / days.length) * 100);
+  document.getElementById("progressFill").style.width = pct + "%";
+  document.getElementById("progressText").textContent = passedCount + " / " + days.length + " 合格";
+}
+
+// ============================================================
+// Quiz Screen
+// ============================================================
+function startQuiz(day) {
+  currentDay = day;
+  var data = quizData[day];
+  document.getElementById("quizTitle").textContent = data.title;
+  document.getElementById("quizUserName").textContent = currentUser;
+
+  // Shuffle options for each question
+  shuffledQuestions = [];
+  for (var i = 0; i < data.questions.length; i++) {
+    var q = data.questions[i];
+    var result = shuffleOptions(q.options, q.correct);
+    shuffledQuestions.push({
+      q: q.q,
+      options: result.options,
+      correctIdx: result.correctIdx
+    });
+  }
+
+  renderQuiz();
+  showScreen("screen-quiz");
+}
+
+function renderQuiz() {
+  var container = document.getElementById("quizQuestions");
+  container.innerHTML = "";
+  for (var i = 0; i < shuffledQuestions.length; i++) {
+    var sq = shuffledQuestions[i];
+    var card = document.createElement("div");
+    card.className = "question-card";
+    card.id = "qcard-" + i;
+
+    var numEl = document.createElement("div");
+    numEl.className = "question-num";
+    numEl.textContent = "Q" + (i + 1);
+
+    var textEl = document.createElement("div");
+    textEl.className = "question-text";
+    textEl.textContent = sq.q;
+
+    var optionsEl = document.createElement("div");
+    optionsEl.className = "options";
+
+    for (var j = 0; j < sq.options.length; j++) {
+      var label = document.createElement("label");
+      label.className = "option-label";
+      label.id = "opt-" + i + "-" + j;
+
+      var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "q" + i;
+      radio.value = j;
+      radio.addEventListener("change", (function(qi, oi) {
+        return function() { selectOption(qi, oi); };
+      })(i, j));
+
+      var span = document.createElement("span");
+      span.textContent = sq.options[j];
+
+      label.appendChild(radio);
+      label.appendChild(span);
+      optionsEl.appendChild(label);
+    }
+
+    card.appendChild(numEl);
+    card.appendChild(textEl);
+    card.appendChild(optionsEl);
+    container.appendChild(card);
+  }
+}
+
+function selectOption(qi, oi) {
+  // Remove selected class from all options of this question
+  for (var j = 0; j < shuffledQuestions[qi].options.length; j++) {
+    var el = document.getElementById("opt-" + qi + "-" + j);
+    if (el) el.classList.remove("selected");
+  }
+  // Add selected class
+  var sel = document.getElementById("opt-" + qi + "-" + oi);
+  if (sel) sel.classList.add("selected");
+}
+
+// ============================================================
+// Submit Quiz
+// ============================================================
+function submitQuiz() {
+  // Check all answered
+  var unanswered = [];
+  var answers = [];
+  for (var i = 0; i < shuffledQuestions.length; i++) {
+    var radios = document.querySelectorAll('input[name="q' + i + '"]');
+    var found = false;
+    for (var r = 0; r < radios.length; r++) {
+      if (radios[r].checked) {
+        answers.push(parseInt(radios[r].value));
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      unanswered.push(i + 1);
+      answers.push(-1);
+    }
+  }
+
+  if (unanswered.length > 0) {
+    alert("未回答の問題があります: Q" + unanswered.join(", Q"));
+    // Scroll to first unanswered
+    var firstCard = document.getElementById("qcard-" + (unanswered[0] - 1));
+    if (firstCard) firstCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+
+  // Score
+  var correct = 0;
+  var results = [];
+  for (var k = 0; k < shuffledQuestions.length; k++) {
+    var isCorrect = answers[k] === shuffledQuestions[k].correctIdx;
+    if (isCorrect) correct++;
+    results.push({
+      questionIdx: k,
+      userAnswer: answers[k],
+      correctAnswer: shuffledQuestions[k].correctIdx,
+      isCorrect: isCorrect
+    });
+  }
+
+  var total = shuffledQuestions.length;
+  var score = Math.round((correct / total) * 100);
+
+  if (score === 100) {
+    markPassed(currentUser, currentDay);
+    showPassScreen();
+  } else {
+    showResultScreen(correct, total, score, results);
+  }
+}
+
+// ============================================================
+// Results Screen (fail)
+// ============================================================
+function showResultScreen(correct, total, score, results) {
+  document.getElementById("resultScore").textContent = correct + " / " + total + " 正解（" + score + "点）";
+
+  var details = document.getElementById("resultDetails");
+  details.innerHTML = "";
+
+  for (var i = 0; i < results.length; i++) {
+    var r = results[i];
+    var sq = shuffledQuestions[r.questionIdx];
+
+    var card = document.createElement("div");
+    card.className = "question-card " + (r.isCorrect ? "correct" : "wrong");
+
+    var numEl = document.createElement("div");
+    numEl.className = "question-num";
+    numEl.textContent = "Q" + (i + 1) + (r.isCorrect ? " \u2705" : " \u274C");
+
+    var textEl = document.createElement("div");
+    textEl.className = "question-text";
+    textEl.textContent = sq.q;
+
+    card.appendChild(numEl);
+    card.appendChild(textEl);
+
+    if (!r.isCorrect) {
+      var optionsEl = document.createElement("div");
+      optionsEl.className = "options";
+
+      for (var j = 0; j < sq.options.length; j++) {
+        var label = document.createElement("div");
+        label.className = "option-label";
+        if (j === r.userAnswer) label.className += " wrong-answer";
+        if (j === r.correctAnswer) label.className += " correct-answer";
+
+        var marker = "";
+        if (j === r.userAnswer && j !== r.correctAnswer) marker = "\u274C ";
+        if (j === r.correctAnswer) marker = "\u2705 ";
+
+        var span = document.createElement("span");
+        span.textContent = marker + sq.options[j];
+        label.appendChild(span);
+        optionsEl.appendChild(label);
+      }
+
+      card.appendChild(optionsEl);
+
+      var indicator = document.createElement("div");
+      indicator.className = "correct-indicator show is-wrong";
+      indicator.textContent = "正解: " + sq.options[r.correctAnswer];
+      card.appendChild(indicator);
+    }
+
+    details.appendChild(card);
+  }
+
+  showScreen("screen-results");
+}
+
+function retryQuiz() {
+  startQuiz(currentDay);
+}
+
+// ============================================================
+// Pass Screen (100%)
+// ============================================================
+function showPassScreen() {
+  document.getElementById("certName").textContent = currentUser;
+  document.getElementById("certDay").textContent = quizData[currentDay].title;
+  document.getElementById("certDate").textContent = formatDateTime();
+  showScreen("screen-pass");
+}
+
+// ============================================================
+// Init
+// ============================================================
+(function init() {
+  var savedName = localStorage.getItem("quiz_username");
+  if (savedName) {
+    currentUser = savedName;
+    document.getElementById("nameInput").value = savedName;
+    showDays();
+  }
+})();
+</script>
+
+</body>
+</html>

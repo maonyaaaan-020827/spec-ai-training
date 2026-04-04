@@ -58,7 +58,8 @@ cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 
 # 研修リポジトリの clone
-git clone git@github.com:SHU-T0/spec-ai-training.git
+# 「あなたのユーザー名」を自分のGitHubユーザー名に置き換える
+git clone git@github.com:あなたのユーザー名/spec-ai-training.git
 ```
 
 ### 2. Cursor 初期設定（Day8）
